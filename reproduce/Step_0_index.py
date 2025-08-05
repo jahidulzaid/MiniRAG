@@ -5,12 +5,24 @@
 import sys
 import os
 
-sys.path.append(os.path.dirname(os.path.dirname(os.path.abspath(__file__))))
-
-
 project_root = os.path.abspath(os.path.join(os.path.dirname(__file__), '..'))
 if project_root not in sys.path:
     sys.path.insert(0, project_root)
+
+from minirag.llm.gemini import gemini_complete
+# rest of your imports and code
+
+
+import sys
+import os
+
+sys.path.append(os.path.dirname(os.path.dirname(os.path.abspath(__file__))))
+
+print("Project root added to sys.path:", project_root)
+print("Current sys.path:")
+for p in sys.path:
+    print("  ", p)
+
 
 
 from minirag import MiniRAG
