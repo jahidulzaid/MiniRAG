@@ -5,3 +5,6 @@ from minirag.llm.hf import (
     hf_embed,
     hf_model_complete
 )
+from minirag.llm.gemini import (
+    gemini_complete,
+)
