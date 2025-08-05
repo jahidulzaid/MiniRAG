@@ -13,6 +13,7 @@ from minirag.llm import (
     gpt_4o_mini_complete,
     hf_embed,
 )
+from minirag.llm.gemini import gemini_complete
 from minirag.utils import EmbeddingFunc
 from transformers import AutoModel, AutoTokenizer
 
@@ -26,7 +27,7 @@ def get_args():
     parser.add_argument("--model", type=str, default="PHI")
     parser.add_argument("--outputpath", type=str, default="./logs/Default_output.csv")
     parser.add_argument("--workingdir", type=str, default="./LiHua-World")
-    parser.add_argument("--datapath", type=str, default="./dataset/LiHua-World/")
+    parser.add_argument("--datapath", type=str, default="./dataset/LiHua-World/data/")
     parser.add_argument(
         "--querypath", type=str, default="./dataset/LiHua-World/qa/query_set.csv"
     )
@@ -38,14 +39,13 @@ args = get_args()
 
 
 if args.model == "PHI":
-    # LLM_MODEL = "microsoft/Phi-3.5-mini-instruct"
-    LLM_MODEL = "mistral:7b"
-# elif args.model == "GLM":
-#     LLM_MODEL = "THUDM/glm-edge-1.5b-chat"
-# elif args.model == "MiniCPM":
-#     LLM_MODEL = "openbmb/MiniCPM3-4B"
-# elif args.model == "qwen":
-#     LLM_MODEL = "Qwen/Qwen2.5-3B-Instruct"
+    LLM_MODEL = "microsoft/Phi-3.5-mini-instruct"
+elif args.model == "GLM":
+    LLM_MODEL = "THUDM/glm-edge-1.5b-chat"
+elif args.model == "MiniCPM":
+    LLM_MODEL = "openbmb/MiniCPM3-4B"
+elif args.model == "qwen":
+    LLM_MODEL = "Qwen/Qwen2.5-3B-Instruct"
 else:
     print("Invalid model name")
     exit(1)
@@ -64,7 +64,9 @@ if not os.path.exists(WORKING_DIR):
 rag = MiniRAG(
     working_dir=WORKING_DIR,
     # llm_model_func=hf_model_complete,
-    llm_model_func=gpt_4o_mini_complete,
+    # llm_model_func=gpt_4o_mini_complete,
+    llm_model_func=gemini_complete,
+
     llm_model_max_token_size=200,
     llm_model_name=LLM_MODEL,
     embedding_func=EmbeddingFunc(
