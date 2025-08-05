@@ -269,101 +269,43 @@
 
 
 
+import asyncio
+import logging
 import httpx
+from minirag.llm.base import LLM
 
-@retry(
-    stop=stop_after_attempt(3),
-    wait=wait_exponential(multiplier=1, min=4, max=10),
-    retry=retry_if_exception_type(
-        (RateLimitError, APIConnectionError, APITimeoutError)
-    ),
-)
-async def openai_complete_if_cache(
-    model,
-    prompt,
-    system_prompt=None,
-    history_messages=[],
-    base_url=None,
-    api_key=None,
-    **kwargs,
-) -> str:
-    if api_key:
-        os.environ["OPENAI_API_KEY"] = api_key
-    if base_url is None:
-        base_url = os.environ["OPENAI_API_BASE"]
+logger = logging.getLogger(__name__)
 
-    messages = []
-    if system_prompt:
-        messages.append({"role": "system", "content": system_prompt})
-    messages.extend(history_messages)
-    messages.append({"role": "user", "content": prompt})
+class OllamaLLM(LLM):
+    def __init__(self, model: str = "phi3", base_url: str = "http://103.102.42.109:11434"):
+        self.model = model
+        self.base_url = base_url
+        self.api_url = f"{self.base_url}/api/chat"
 
-    # Log query
-    logger.debug("===== Query Input to LLM =====")
-    logger.debug(f"Query: {prompt}")
-    logger.debug(f"System prompt: {system_prompt}")
-    logger.debug("Full context:")
+    async def _call_ollama(self, messages):
+        headers = {"Content-Type": "application/json"}
+        payload = {
+            "model": self.model,
+            "messages": messages,
+            "stream": False
+        }
 
-    # ==== OLLAMA PATCH START ====
-    if base_url.startswith("http://") and "11434" in base_url:
-        logger.debug("Using Ollama API via native call")
         async with httpx.AsyncClient() as client:
             try:
-                prompt_text = "\n".join([m["content"] for m in messages])
-                response = await client.post(
-                    base_url.rstrip("/") + "/api/chat",
-                    json={
-                        "model": model,
-                        "messages": [{"role": "user", "content": prompt_text}],
-                        "stream": False,
-                    },
-                    timeout=60,
-                )
+                response = await client.post(self.api_url, headers=headers, json=payload)
                 response.raise_for_status()
-                result = response.json()
-                return result["message"]["content"]
-            except Exception as e:
-                logger.error(f"Ollama call failed: {e}")
-                return ""
-    # ==== OLLAMA PATCH END ====
+                data = response.json()
+                return data["message"]["content"]
+            except httpx.HTTPError as e:
+                logger.error(f"Ollama API call failed: {e}")
+                raise
 
-    # Use OpenAI SDK
-    openai_async_client = (
-        AsyncOpenAI() if base_url is None else AsyncOpenAI(base_url=base_url)
-    )
+    async def run(self, prompt: str, context: str = "") -> str:
+        messages = []
 
-    kwargs.pop("hashing_kv", None)
-    kwargs.pop("keyword_extraction", None)
+        if context:
+            messages.append({"role": "system", "content": context})
 
-    if "response_format" in kwargs:
-        response = await openai_async_client.beta.chat.completions.parse(
-            model=model, messages=messages, **kwargs
-        )
-    else:
-        response = await openai_async_client.chat.completions.create(
-            model=model, messages=messages, **kwargs
-        )
+        messages.append({"role": "user", "content": prompt})
 
-    if hasattr(response, "__aiter__"):
-
-        async def inner():
-            async for chunk in response:
-                content = chunk.choices[0].delta.content
-                if content is None:
-                    continue
-                if r"\u" in content:
-                    content = safe_unicode_decode(content.encode("utf-8"))
-                yield content
-
-        return inner()
-    else:
-        if not response or not hasattr(response, "choices") or not response.choices:
-            logger.error("No valid choices returned. Full response: %s", response)
-            return ""
-        content = response.choices[0].message.content
-        if content is None:
-            logger.error("The message content is None. Full response: %s", response)
-            return ""
-        if r"\u" in content:
-            content = safe_unicode_decode(content.encode("utf-8"))
-        return content
+        return await self._call_ollama(messages)
