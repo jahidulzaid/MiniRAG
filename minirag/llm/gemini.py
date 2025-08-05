@@ -14,3 +14,5 @@ async def gemini_complete(prompt, system_prompt=None, history_messages=[], **kwa
         return chat.send_message(prompt).text
 
     return await loop.run_in_executor(None, _run)
+
+#ls
