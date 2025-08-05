@@ -5,32 +5,14 @@
 import sys
 import os
 
-project_root = os.path.abspath(os.path.join(os.path.dirname(__file__), '..'))
-if project_root not in sys.path:
-    sys.path.insert(0, project_root)
-
-from minirag.llm.gemini import gemini_complete
-# rest of your imports and code
-
-
-import sys
-import os
-
 sys.path.append(os.path.dirname(os.path.dirname(os.path.abspath(__file__))))
-
-print("Project root added to sys.path:", project_root)
-print("Current sys.path:")
-for p in sys.path:
-    print("  ", p)
-
 
 
 from minirag import MiniRAG
-# from minirag.llm import (
-#     gpt_4o_mini_complete,
-#     hf_embed,
-# )
-from minirag.llm.gemini import gemini_complete
+from minirag.llm import (
+    gpt_4o_mini_complete,
+    hf_embed,
+)
 from minirag.utils import EmbeddingFunc
 from transformers import AutoModel, AutoTokenizer
 
@@ -81,9 +63,7 @@ if not os.path.exists(WORKING_DIR):
 rag = MiniRAG(
     working_dir=WORKING_DIR,
     # llm_model_func=hf_model_complete,
-    # llm_model_func=gpt_4o_mini_complete,
-    llm_model_func=gemini_complete,
-
+    llm_model_func=gpt_4o_mini_complete,
     llm_model_max_token_size=200,
     llm_model_name=LLM_MODEL,
     embedding_func=EmbeddingFunc(
