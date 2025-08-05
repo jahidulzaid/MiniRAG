@@ -38,13 +38,14 @@ args = get_args()
 
 
 if args.model == "PHI":
-    LLM_MODEL = "microsoft/Phi-3.5-mini-instruct"
-elif args.model == "GLM":
-    LLM_MODEL = "THUDM/glm-edge-1.5b-chat"
-elif args.model == "MiniCPM":
-    LLM_MODEL = "openbmb/MiniCPM3-4B"
-elif args.model == "qwen":
-    LLM_MODEL = "Qwen/Qwen2.5-3B-Instruct"
+    # LLM_MODEL = "microsoft/Phi-3.5-mini-instruct"
+    LLM_MODEL = "mistral:7b"
+# elif args.model == "GLM":
+#     LLM_MODEL = "THUDM/glm-edge-1.5b-chat"
+# elif args.model == "MiniCPM":
+#     LLM_MODEL = "openbmb/MiniCPM3-4B"
+# elif args.model == "qwen":
+#     LLM_MODEL = "Qwen/Qwen2.5-3B-Instruct"
 else:
     print("Invalid model name")
     exit(1)
