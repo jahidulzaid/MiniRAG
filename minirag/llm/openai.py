@@ -272,7 +272,7 @@
 import asyncio
 import logging
 import httpx
-from minirag.llm.base import LLM
+from minirag.base import LLM
 
 logger = logging.getLogger(__name__)
 

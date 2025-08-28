@@ -7,5 +7,23 @@
     "content_length": 144,
     "created_at": "2025-08-05T12:00:01.939599",
     "updated_at": "2025-08-05T12:00:24.782323"
+  },
+  "doc-09b195a6696ac95febc767836c4353c4": {
+    "status": "processed",
+    "chunks_count": 1,
+    "content": "Time: 20260108_11:00\nWolfgangSchulz: Hey! Just wanted to remind you about our lunch at the cozy café downtown at 12:00. Can't wait to catch up! 😊\nLiHua: Thanks for the reminder! I'm really looking forward to it too! What do you feel like eating? 🍽️\nWolfgangSchulz: I'm in the mood for something warm and hearty. Maybe a nice soup or a sandwich? What about you?\nLiHua: Sounds perfect! I'm thinking of getting a nice burger. It's always a good choice! 🍔 See you there in a bit!\nWolfgangSchulz: Awesome! I'll see you soon!",
+    "content_summary": "Time: 20260108_11:00\nWolfgangSchulz: Hey! Just wanted to remind you about our lunch at the cozy café...",
+    "content_length": 519,
+    "created_at": "2025-08-05T15:15:56.569121",
+    "updated_at": "2025-08-05T15:15:58.285875"
+  },
+  "doc-8d47395f5c04a5afbdc957e73d4fc1ba": {
+    "status": "processed",
+    "chunks_count": 1,
+    "content": "Time: 20260109_10:00\nLiHua: Hey! Just moved in, and I need your expert advice. What are the best spots in the city for some epic photos? 📸🌆\nWolfgangSchulz: Hey! Welcome to the city! For great photos, you should check out the park by the river. The views are stunning, especially at sunset. Also, don't miss the old town square; there are some amazing buildings there. And if you can, the observation deck has the best city skyline view! 📍✨\nLiHua: Awesome tips! I'll definitely hit up the park and the old town square. The observation deck sounds like a must! Can’t wait to capture some amazing moments. Thanks, buddy! 😊🌅\nWolfgangSchulz: No problem! You’re going to love it here. Let me know if you need more recommendations or want to explore together sometime! 📷👍\nLiHua: For sure! Exploring together sounds fun! I’ll hit you up when I’m ready for a photo adventure. Catch you later! 🌍✌️",
+    "content_summary": "Time: 20260109_10:00\nLiHua: Hey! Just moved in, and I need your expert advice. What are the best spo...",
+    "content_length": 887,
+    "created_at": "2025-08-05T15:59:05.190447",
+    "updated_at": "2025-08-05T15:59:06.062171"
   }
 }

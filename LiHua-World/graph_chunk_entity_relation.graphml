@@ -1,0 +1,179 @@
+<?xml version='1.0' encoding='utf-8'?>
+<graphml xmlns="http://graphml.graphdrawing.org/xmlns" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://graphml.graphdrawing.org/xmlns http://graphml.graphdrawing.org/xmlns/1.0/graphml.xsd"><key id="d6" for="edge" attr.name="source_id" attr.type="string"/>
+<key id="d5" for="edge" attr.name="keywords" attr.type="string"/>
+<key id="d4" for="edge" attr.name="description" attr.type="string"/>
+<key id="d3" for="edge" attr.name="weight" attr.type="double"/>
+<key id="d2" for="node" attr.name="source_id" attr.type="string"/>
+<key id="d1" for="node" attr.name="description" attr.type="string"/>
+<key id="d0" for="node" attr.name="entity_type" attr.type="string"/>
+<graph edgedefault="undirected"><node id="&quot;ALICE&quot;">
+  <data key="d0">"PERSON"</data>
+  <data key="d1">"Alice is the person representing Hailey's bakery and is responsible for the delivery of bread."</data>
+  <data key="d2">chunk-f57298202266dbfe577b789cecb111a4</data>
+</node>
+<node id="&quot;HAILEY'S BAKERY&quot;">
+  <data key="d0">"ORGANIZATION"</data>
+  <data key="d1">"Hailey's bakery is an establishment that produces and delivers bread, managed by Alice."</data>
+  <data key="d2">chunk-f57298202266dbfe577b789cecb111a4</data>
+</node>
+<node id="&quot;20260408_08:38&quot;">
+  <data key="d0">"EVENT"</data>
+  <data key="d1">"20260408_08:38 refers to the time when the communication regarding the bread delivery took place."</data>
+  <data key="d2">chunk-f57298202266dbfe577b789cecb111a4</data>
+</node>
+<node id="&quot;BREAD&quot;">
+  <data key="d0">"EVENT"</data>
+  <data key="d1">"Bread is the product delivered by Hailey's bakery and is the subject of Alice's communication."</data>
+  <data key="d2">chunk-f57298202266dbfe577b789cecb111a4</data>
+</node>
+<node id="&quot;ASAP&quot;">
+  <data key="d0">"EVENT"</data>
+  <data key="d1">"ASAP refers to the urgency of the action for the recipient to pick up the delivered bread."</data>
+  <data key="d2">chunk-f57298202266dbfe577b789cecb111a4</data>
+</node>
+<node id="&quot;DELIVERY&quot;">
+  <data key="d0">"EVENT"</data>
+  <data key="d1">"Delivery refers to the act of bringing the bread from Hailey's bakery to the recipient, highlighted by Alice's message."</data>
+  <data key="d2">chunk-f57298202266dbfe577b789cecb111a4</data>
+</node>
+<node id="&quot;20260408&quot;">
+  <data key="d0">"EVENT"</data>
+  <data key="d1">"20260408 indicates the date associated with the communication about the bread delivery."</data>
+  <data key="d2">chunk-f57298202266dbfe577b789cecb111a4</data>
+</node>
+<node id="&quot;08:38&quot;">
+  <data key="d0">"EVENT"</data>
+  <data key="d1">"08:38 specifies the time associated with the communication regarding the bread delivery."</data>
+  <data key="d2">chunk-f57298202266dbfe577b789cecb111a4</data>
+</node>
+<node id="&quot;WOLFGANG SCHULZ&quot;">
+  <data key="d0">"PERSON"</data>
+  <data key="d1">"Wolfgang Schulz is a participant in a casual conversation, organizing a lunch meeting with Li Hua at a café and expressing enthusiasm about it."</data>
+  <data key="d2">chunk-09b195a6696ac95febc767836c4353c4</data>
+</node>
+<node id="&quot;LI HUA&quot;">
+  <data key="d0">"PERSON"</data>
+  <data key="d1">"Li Hua is a participant in a casual conversation, confirming a lunch meeting with Wolfgang Schulz and showing excitement about the meal."</data>
+  <data key="d2">chunk-09b195a6696ac95febc767836c4353c4</data>
+</node>
+<node id="&quot;THE COZY CAFÉ DOWNTOWN&quot;">
+  <data key="d0">"LOCATION"</data>
+  <data key="d1">"The cozy café downtown is the designated meeting place for Wolfgang and Li Hua's lunch, suggesting a friendly and informal atmosphere."</data>
+  <data key="d2">chunk-09b195a6696ac95febc767836c4353c4</data>
+</node>
+<node id="&quot;LUNCH&quot;">
+  <data key="d0">"EVENT"</data>
+  <data key="d1">"Lunch is the social event organized by Wolfgang and Li Hua to catch up, featuring discussions about their food preferences."</data>
+  <data key="d2">chunk-09b195a6696ac95febc767836c4353c4</data>
+</node>
+<node id="&quot;SOUP&quot;">
+  <data key="d0">"FOOD"</data>
+  <data key="d1">"Soup is mentioned as a food preference by Wolfgang Schulz for their lunch meeting, indicating a craving for warm and hearty dishes."</data>
+  <data key="d2">chunk-09b195a6696ac95febc767836c4353c4</data>
+</node>
+<node id="&quot;SANDWICH&quot;">
+  <data key="d0">"FOOD"</data>
+  <data key="d1">"A sandwich is suggested by Wolfgang Schulz as another possible food choice for their lunch, highlighting casual dining options."</data>
+  <data key="d2">chunk-09b195a6696ac95febc767836c4353c4</data>
+</node>
+<node id="&quot;BURGER&quot;">
+  <data key="d0">"FOOD"</data>
+  <data key="d1">"Li Hua expresses interest in having a burger for lunch, representing a classic and popular food choice."</data>
+  <data key="d2">chunk-09b195a6696ac95febc767836c4353c4</data>
+</node>
+<node id="&quot;12:00&quot;">
+  <data key="d0">"TIME"</data>
+  <data key="d1">"12:00 is the scheduled time for the lunch meeting between Wolfgang Schulz and Li Hua, signifying the timing of their social interaction."</data>
+  <data key="d2">chunk-09b195a6696ac95febc767836c4353c4</data>
+</node>
+<edge source="&quot;ALICE&quot;" target="&quot;HAILEY'S BAKERY&quot;">
+  <data key="d3">9.0</data>
+  <data key="d4">"Alice represents Hailey's bakery and communicates on its behalf regarding the bread delivery."</data>
+  <data key="d5">"representation, delivery communication"</data>
+  <data key="d6">chunk-f57298202266dbfe577b789cecb111a4</data>
+</edge>
+<edge source="&quot;ALICE&quot;" target="&quot;20260408_08:38&quot;">
+  <data key="d3">8.0</data>
+  <data key="d4">"Alice's message about the delivery is linked to the specific time of communication, indicating urgency."</data>
+  <data key="d5">"time-sensitive communication, delivery"</data>
+  <data key="d6">chunk-f57298202266dbfe577b789cecb111a4</data>
+</edge>
+<edge source="&quot;ALICE&quot;" target="&quot;DELIVERY&quot;">
+  <data key="d3">9.0</data>
+  <data key="d4">"Alice's message pertains to the delivery of bread, linking her to the event of delivery."</data>
+  <data key="d5">"delivery responsibility, communication"</data>
+  <data key="d6">chunk-f57298202266dbfe577b789cecb111a4</data>
+</edge>
+<edge source="&quot;HAILEY'S BAKERY&quot;" target="&quot;BREAD&quot;">
+  <data key="d3">10.0</data>
+  <data key="d4">"Hailey's bakery produces and delivers the bread mentioned in Alice's communication."</data>
+  <data key="d5">"product, bakery operation"</data>
+  <data key="d6">chunk-f57298202266dbfe577b789cecb111a4</data>
+</edge>
+<edge source="&quot;BREAD&quot;" target="&quot;ASAP&quot;">
+  <data key="d3">8.0</data>
+  <data key="d4">"The urgency (ASAP) of the communication emphasizes the importance of the bread delivery."</data>
+  <data key="d5">"urgency, importance"</data>
+  <data key="d6">chunk-f57298202266dbfe577b789cecb111a4</data>
+</edge>
+<edge source="&quot;BREAD&quot;" target="&quot;DELIVERY&quot;">
+  <data key="d3">9.0</data>
+  <data key="d4">"Delivery is the act of transferring the bread and is an essential part of the communication."}&lt;|product, delivery process"</data>
+  <data key="d5">9</data>
+  <data key="d6">chunk-f57298202266dbfe577b789cecb111a4</data>
+</edge>
+<edge source="&quot;20260408&quot;" target="&quot;08:38&quot;">
+  <data key="d3">8.0</data>
+  <data key="d4">"The date (20260408) is related to the time (08:38), establishing the timing of the delivery communication."</data>
+  <data key="d5">"date and time, scheduling"</data>
+  <data key="d6">chunk-f57298202266dbfe577b789cecb111a4</data>
+</edge>
+<edge source="&quot;WOLFGANG SCHULZ&quot;" target="&quot;LI HUA&quot;">
+  <data key="d3">8.0</data>
+  <data key="d4">"Wolfgang Schulz and Li Hua are arranging to meet for lunch, indicating a friendly relationship and eagerness to connect."</data>
+  <data key="d5">"social interaction, friendship"</data>
+  <data key="d6">chunk-09b195a6696ac95febc767836c4353c4</data>
+</edge>
+<edge source="&quot;WOLFGANG SCHULZ&quot;" target="&quot;THE COZY CAFÉ DOWNTOWN&quot;">
+  <data key="d3">7.0</data>
+  <data key="d4">"Wolfgang Schulz mentions the cozy café downtown as the place where he and Li Hua will meet for lunch."</data>
+  <data key="d5">"meeting location, hospitality"</data>
+  <data key="d6">chunk-09b195a6696ac95febc767836c4353c4</data>
+</edge>
+<edge source="&quot;WOLFGANG SCHULZ&quot;" target="&quot;SOUP&quot;">
+  <data key="d3">5.0</data>
+  <data key="d4">"Wolfgang Schulz expresses a specific craving for soup, indicating his preferred choice of food for the lunch meeting."</data>
+  <data key="d5">"food preference, meal choice"</data>
+  <data key="d6">chunk-09b195a6696ac95febc767836c4353c4</data>
+</edge>
+<edge source="&quot;WOLFGANG SCHULZ&quot;" target="&quot;SANDWICH&quot;">
+  <data key="d3">5.0</data>
+  <data key="d4">"Wolfgang Schulz mentions a sandwich as another option for lunch, showcasing his casual dining preferences."</data>
+  <data key="d5">"food preference, meal choice"</data>
+  <data key="d6">chunk-09b195a6696ac95febc767836c4353c4</data>
+</edge>
+<edge source="&quot;LI HUA&quot;" target="&quot;THE COZY CAFÉ DOWNTOWN&quot;">
+  <data key="d3">7.0</data>
+  <data key="d4">"Li Hua confirms the lunch meeting at the cozy café downtown, which is where they will enjoy their meals together."</data>
+  <data key="d5">"meeting location, hospitality"</data>
+  <data key="d6">chunk-09b195a6696ac95febc767836c4353c4</data>
+</edge>
+<edge source="&quot;LI HUA&quot;" target="&quot;BURGER&quot;">
+  <data key="d3">5.0</data>
+  <data key="d4">"Li Hua’s choice of a burger illustrates her casual dining preference in the context of the lunch plans."</data>
+  <data key="d5">"food preference, meal choice"</data>
+  <data key="d6">chunk-09b195a6696ac95febc767836c4353c4</data>
+</edge>
+<edge source="&quot;THE COZY CAFÉ DOWNTOWN&quot;" target="&quot;LUNCH&quot;">
+  <data key="d3">8.0</data>
+  <data key="d4">"The lunch event is organized to take place at the cozy café downtown, highlighting the setting for this social occasion."</data>
+  <data key="d5">"event location, social gathering"</data>
+  <data key="d6">chunk-09b195a6696ac95febc767836c4353c4</data>
+</edge>
+<edge source="&quot;LUNCH&quot;" target="&quot;12:00&quot;">
+  <data key="d3">6.0</data>
+  <data key="d4">"The lunch event is scheduled for 12:00, which sets the time for their social gathering."</data>
+  <data key="d5">"event timing, social gathering"</data>
+  <data key="d6">chunk-09b195a6696ac95febc767836c4353c4</data>
+</edge>
+</graph></graphml>
