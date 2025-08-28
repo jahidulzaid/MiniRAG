@@ -1,3 +1,11 @@
+import asyncio
+import logging
+import httpx
+from minirag.base import LLM
+
+logger = logging.getLogger(__name__)
+
+
 ollama_default_base_url = "http://103.102.42.109:11434/api/chat"
 
 async def ollama_complete(
@@ -22,9 +30,16 @@ async def ollama_complete(
     import httpx
     headers = {"Content-Type": "application/json"}
     payload = {"model": model, "messages": messages, "stream": False}
+
+
+
     async with httpx.AsyncClient() as client:
         try:
-            response = await client.post(api_url, headers=headers, json=payload)
+            # Set a longer timeout
+            timeout = httpx.Timeout(60.0, connect=10.0)
+
+            async with httpx.AsyncClient(timeout=timeout) as client:
+                response = await client.post(api_url, headers=headers, json=payload)
             response.raise_for_status()
             data = response.json()
             return data["message"]["content"]
@@ -302,43 +317,43 @@ async def gpt_4o_mini_complete(
 
 
 
-import asyncio
-import logging
-import httpx
-from minirag.base import LLM
+# import asyncio
+# import logging
+# import httpx
+# from minirag.base import LLM
 
-logger = logging.getLogger(__name__)
+# logger = logging.getLogger(__name__)
 
-class OllamaLLM(LLM):
-    def __init__(self, model: str = "llama3.1:8b", base_url: str = "http://103.102.42.109:11434/api/chat"):
-        self.model = model
-        self.base_url = base_url
-        self.api_url = f"{self.base_url}"
+# class OllamaLLM(LLM):
+#     def __init__(self, model: str = "llama3.1:8b", base_url: str = "http://103.102.42.109:11434/api/chat"):
+#         self.model = model
+#         self.base_url = base_url
+#         self.api_url = f"{self.base_url}"
 
-    async def _call_ollama(self, messages):
-        headers = {"Content-Type": "application/json"}
-        payload = {
-            "model": self.model,
-            "messages": messages,
-            "stream": False
-        }
+#     async def _call_ollama(self, messages):
+#         headers = {"Content-Type": "application/json"}
+#         payload = {
+#             "model": self.model,
+#             "messages": messages,
+#             "stream": False
+#         }
 
-        async with httpx.AsyncClient() as client:
-            try:
-                response = await client.post(self.api_url, headers=headers, json=payload)
-                response.raise_for_status()
-                data = response.json()
-                return data["message"]["content"]
-            except httpx.HTTPError as e:
-                logger.error(f"Ollama API call failed: {e}")
-                raise
+#         async with httpx.AsyncClient() as client:
+#             try:
+#                 response = await client.post(self.api_url, headers=headers, json=payload)
+#                 response.raise_for_status()
+#                 data = response.json()
+#                 return data["message"]["content"]
+#             except httpx.HTTPError as e:
+#                 logger.error(f"Ollama API call failed: {e}")
+#                 raise
 
-    async def run(self, prompt: str, context: str = "") -> str:
-        messages = []
+#     async def run(self, prompt: str, context: str = "") -> str:
+#         messages = []
 
-        if context:
-            messages.append({"role": "system", "content": context})
+#         if context:
+#             messages.append({"role": "system", "content": context})
 
-        messages.append({"role": "user", "content": prompt})
+#         messages.append({"role": "user", "content": prompt})
 
-        return await self._call_ollama(messages)
+#         return await self._call_ollama(messages)
