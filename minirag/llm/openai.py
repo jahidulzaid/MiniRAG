@@ -4,7 +4,7 @@ async def ollama_complete(
     prompt,
     system_prompt=None,
     history_messages=None,
-    model="phi3",
+    model="llama3.1:8b",
     base_url=ollama_default_base_url,
     **kwargs
 ) -> str:
@@ -227,7 +227,7 @@ async def gpt_4o_mini_complete(
         prompt,
         system_prompt=system_prompt,
         history_messages=history_messages,
-        model="phi3",  # or another model if you want
+        model="llama3.1:8b",  # or another model if you want
         **kwargs
     )
 
@@ -310,7 +310,7 @@ from minirag.base import LLM
 logger = logging.getLogger(__name__)
 
 class OllamaLLM(LLM):
-    def __init__(self, model: str = "phi3", base_url: str = "http://103.102.42.109:11434"):
+    def __init__(self, model: str = "llama3.1:8b", base_url: str = "http://103.102.42.109:11434"):
         self.model = model
         self.base_url = base_url
         self.api_url = f"{self.base_url}/api/chat"
