@@ -1,3 +1,36 @@
+ollama_default_base_url = "http://103.102.42.109:11434"
+
+async def ollama_complete(
+    prompt,
+    system_prompt=None,
+    history_messages=None,
+    model="phi3",
+    base_url=ollama_default_base_url,
+    **kwargs
+) -> str:
+    """
+    Mimics OpenAI-style completion but uses the Ollama API at the specified base_url.
+    """
+    if history_messages is None:
+        history_messages = []
+    messages = []
+    if system_prompt:
+        messages.append({"role": "system", "content": system_prompt})
+    messages.extend(history_messages)
+    messages.append({"role": "user", "content": prompt})
+    api_url = f"{base_url}/api/chat"
+    import httpx
+    headers = {"Content-Type": "application/json"}
+    payload = {"model": model, "messages": messages, "stream": False}
+    async with httpx.AsyncClient() as client:
+        try:
+            response = await client.post(api_url, headers=headers, json=payload)
+            response.raise_for_status()
+            data = response.json()
+            return data["message"]["content"]
+        except httpx.HTTPError as e:
+            logger.error(f"Ollama API call failed: {e}")
+            raise
 # """
 # OpenAI LLM Interface Module
 # ==========================
@@ -184,19 +217,19 @@
 #     )
 
 
-# async def gpt_4o_mini_complete(
-#     prompt, system_prompt=None, history_messages=[], keyword_extraction=False, **kwargs
-# ) -> str:
-#     keyword_extraction = kwargs.pop("keyword_extraction", None)
-#     if keyword_extraction:
-#         kwargs["response_format"] = GPTKeywordExtractionFormat
-#     return await openai_complete_if_cache(
-#         "gpt-4o-mini",
-#         prompt,
-#         system_prompt=system_prompt,
-#         history_messages=history_messages,
-#         **kwargs,
-#     )
+async def gpt_4o_mini_complete(
+    prompt, system_prompt=None, history_messages=[], keyword_extraction=False, **kwargs
+) -> str:
+    keyword_extraction = kwargs.pop("keyword_extraction", None)
+    if keyword_extraction:
+        kwargs["response_format"] = GPTKeywordExtractionFormat
+    return await openai_complete_if_cache(
+        "gpt-4o-mini",
+        prompt,
+        system_prompt=system_prompt,
+        history_messages=history_messages,
+        **kwargs,
+    )
 
 
 # async def nvidia_openai_complete(
