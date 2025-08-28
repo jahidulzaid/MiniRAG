@@ -1,4 +1,8 @@
-from abc import abstractmethod
+from abc import ABC, abstractmethod
+class LLM(ABC):
+    @abstractmethod
+    async def run(self, prompt: str, context: str = "") -> str:
+        pass
 from dataclasses import dataclass, field
 from enum import Enum
 from typing import Any, TypedDict, Optional, Union, Literal, Generic, TypeVar
