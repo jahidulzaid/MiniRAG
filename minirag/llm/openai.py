@@ -36,7 +36,7 @@ async def ollama_complete(
     async with httpx.AsyncClient() as client:
         try:
             # Set a longer timeout
-            timeout = httpx.Timeout(60.0, connect=10.0)
+            timeout = httpx.Timeout(180.0, connect=10.0)
 
             async with httpx.AsyncClient(timeout=timeout) as client:
                 response = await client.post(api_url, headers=headers, json=payload)
