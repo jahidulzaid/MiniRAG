@@ -1,4 +1,4 @@
-ollama_default_base_url = "http://103.102.42.109:11434"
+ollama_default_base_url = "http://103.102.42.109:11434/api/chat"
 
 async def ollama_complete(
     prompt,
@@ -310,7 +310,7 @@ from minirag.base import LLM
 logger = logging.getLogger(__name__)
 
 class OllamaLLM(LLM):
-    def __init__(self, model: str = "llama3.1:8b", base_url: str = "http://103.102.42.109:11434"):
+    def __init__(self, model: str = "llama3.1:8b", base_url: str = "http://103.102.42.109:11434/api/chat"):
         self.model = model
         self.base_url = base_url
         self.api_url = f"{self.base_url}/api/chat"
