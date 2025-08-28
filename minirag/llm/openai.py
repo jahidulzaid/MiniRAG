@@ -18,7 +18,7 @@ async def ollama_complete(
         messages.append({"role": "system", "content": system_prompt})
     messages.extend(history_messages)
     messages.append({"role": "user", "content": prompt})
-    api_url = f"{base_url}/api/chat"
+    api_url = f"{base_url}"
     import httpx
     headers = {"Content-Type": "application/json"}
     payload = {"model": model, "messages": messages, "stream": False}
